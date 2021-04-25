@@ -1,0 +1,43 @@
+<%- include('partials/head.ejs') %>
+
+    <body>
+        <%- include('partials/homenavbar.ejs') %>
+            <div class="container">
+                <div class="jumbotron">
+                    <h1 class="display-4">Bem vindo ao Articles Center!</h1>
+                    <p class="lead">Este é um blog desenvolvido com muito carinho por mim, Lucas Góis. Este projeto é um dos meus primeiros 100% funcionais e sempre que possível receberá updates de conteúdo e de funcionalidades que irão agradar aos leitores e amigos
+                        que me acompanham em minha jornada como programador.
+                    </p>
+                    <hr class="my-4">
+                    <p>Para mais detalhes sobre o processo e as tecnologias utilizadas no desenvolvimento deste blog, clique no link abaixo!</p>
+                    <a class="btn btn-primary btn-lg" href="#" role="button">Leia mais</a>
+                </div>
+                <% articles.forEach(article => { %>
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>
+                                <%= article.title %>
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <a href="/articles/<%= article.slug %>">
+                                <button class="btn btn-success">
+                                    Ler artigo
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <br>
+                    <% }) %>
+                        <div class="d-flex justify-content-end">
+                            <a href="/articles/page/2">
+                                <button class="btn btn-primary">
+                            Next >
+                        </button>
+                            </a>
+                            <br>
+                        </div>
+            </div>
+            <br>
+    </body>
+    <%- include('partials/footer.ejs') %>

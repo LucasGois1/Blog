@@ -1,0 +1,61 @@
+<%- include('../../partials/head.ejs') %>
+
+    <body>
+        <%- include('../../partials/navbar.ejs') %>
+            <div class="container">
+                <br>
+                <h2>Categorias</h2>
+                <br>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Slug</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% categories.forEach(category => { %>
+                            <tr>
+                                <th>
+                                    <%= category.id %>
+                                </th>
+                                <th>
+                                    <%= category.title %>
+                                </th>
+                                <th>
+                                    <%= category.slug %>
+                                </th>
+                                <th class="d-flex justify-content-center">
+
+                                    <a href="/admin/categories/update/<%= category.id %> ">
+                                        <button class="btn btn-dark" style="margin-right: 5px;">Editar</button>
+                                    </a>
+
+                                    <form action="/admin/categories/delete" method="post" onsubmit="confirmDelete(event, this)">
+                                        <input type="hidden" name="id" value="<%= category.id %> ">
+                                        <button class="btn btn-danger" style="margin-left: 5px;">Excluir</button>
+                                    </form>
+
+                                </th>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+                <a href="/admin/categories/new">
+                    <button class="btn btn-success">Nova categoria</button>
+                </a>
+            </div>
+    </body>
+    <script>
+        function confirmDelete(event, form) {
+            event.preventDefault()
+            const decision = confirm('Você tem certeza que deseja excluir esta categoria?')
+            if (decision) {
+                form.submit()
+            }
+        }
+    </script>
+
+    <%- include('../../partials/footer.ejs') %>

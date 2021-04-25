@@ -1,0 +1,49 @@
+<%- include('partials/head.ejs') %>
+
+    <body>
+        <%- include('partials/homenavbar.ejs') %>
+            <div class="container">
+                <% articles.forEach(article => { %>
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>
+                                <%= article.title %>
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <a href="/articles/<%= article.slug %>">
+                                <button class="btn btn-success">
+                                    Ler artigo
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <br>
+                    <% }) %>
+                        <div class="d-flex justify-content-between">
+                            <% if (page == 2) { %>
+                                <a href="/">
+                                    <button class="btn btn-primary">
+                               < Anterior
+                            </button>
+                                </a>
+                                <% } else { %>
+                                    <a href="/articles/page/<%= page - 1 %> ">
+                                        <button class="btn btn-primary">
+                               < Anterior
+                            </button>
+                                    </a>
+                                    <% } %>
+                                        <a href="/articles/page/<%= page + 1 %> ">
+                                            <button class="btn btn-primary">
+                            Proximo >
+                        </button>
+                                        </a>
+
+                        </div>
+            </div>
+            <br>
+    </body>
+    <script>
+    </script>
+    <%- include('partials/footer.ejs') %>

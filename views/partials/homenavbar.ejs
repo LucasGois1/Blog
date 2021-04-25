@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">
+        <img src="/img/logo.png" alt="logo" style="width: 120px;">
+    </a>
+    <ul class="navbar-nav mr-auto d-flex flex-row justify-content-around" style="width: 90vw; overflow:scroll;">
+        <li>
+            <a class="nav-link" href="/">Home</a>
+        </li>
+        <% categories.forEach(category => { %>
+            <li class="nav-item">
+                <a class="nav-link" href="/categories/<%= category.slug %>">
+                    <%= category.title %>
+                </a>
+            </li>
+            <% }) %>
+    </ul>
+</nav>

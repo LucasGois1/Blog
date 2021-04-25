@@ -1,0 +1,24 @@
+<%- include('partials/head.ejs') %>
+
+    <body>
+        <%- include('partials/homenavbar.ejs') %>
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>
+                            <%= article.title %>
+                        </h1>
+                    </div>
+                    <div class="card-body">
+                        <%- article.body %>
+                    </div>
+                    <div class="card-footer">
+                        <p>
+                            Postado em:
+                            <%= article.createdAt %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </body>
+    <%- include('partials/footer.ejs') %>
